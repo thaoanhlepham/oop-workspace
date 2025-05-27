@@ -7,8 +7,8 @@ class Student : public Person {
 private:
     int id;
 public:
-    Student(const std::string& name, int id) : Person(name), id(id) {}
-    int get_id() const { return id; }
+    Student(const std::string& name, int id);
+    int get_id() const;
 };
 
 #endif
