@@ -5,7 +5,7 @@
 
 class Instructor : public Person {
 public:
-    Instructor(const std::string& name) : Person(name) {}
+    Instructor(const std::string& name);
 };
 
 #endif
