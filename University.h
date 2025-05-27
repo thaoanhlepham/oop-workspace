@@ -1,8 +1,8 @@
 #ifndef UNIVERSITY_H
 #define UNIVERSITY_H
 
-#include <vector>
 #include <string>
+#include <vector>
 #include "Course.h"
 #include "Gradebook.h"
 
@@ -13,18 +13,12 @@ private:
     Gradebook* gradebook;
     std::vector<Course> courses;
 public:
-    University(const std::string& name, const std::string& location)
-        : name(name), location(location), gradebook(new Gradebook()) {}
+    University(const std::string& name, const std::string& location);
+    ~University();
 
-    ~University() { delete gradebook; }
-
-    void addCourse(int id, const std::string& course_name) {
-        courses.emplace_back(id, course_name);
-    }
-
-    Gradebook* get_gradebook() const { return gradebook; }
-
-    std::vector<Course>& get_courses() { return courses; }
+    void addCourse(int id, const std::string& course_name);
+    Gradebook* get_gradebook() const;
+    std::vector<Course>& get_courses();
 };
 
 #endif
