@@ -66,7 +66,7 @@ class Game
             double dist = Utils::calculateDistance(shipPos, minePos);
 
             if (dist <= mineDistanceThreshold) {
-              Explosion* explosion = mine->explode();
+              Explosion* explosion = new Explosion(mine->explode());
               explosion->apply(*ship);
               entities.push_back(explosion);
               break;
