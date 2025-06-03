@@ -9,7 +9,7 @@ class Explosion : public GameEntity, public Effect
 {
   public:
     Explosion(int x, int y): GameEntity(x, y, 'E') {
-      setType(GameEntityType::ShipType);
+      setType(GameEntityType::ExplosionType);
     }
 
     void apply(GameEntity& entity) override {
