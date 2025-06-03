@@ -11,10 +11,10 @@ class Mine : public GameEntity
       setType(GameEntityType::MineType);
     }
 
-    Explosion* explode() {
+    Explosion explode() {
       setType(GameEntityType::NoneType);
       auto [x, y] = getPos();
-      return new Explosion(x, y);
+      return Explosion(x, y);
     }
 };
 
