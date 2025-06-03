@@ -7,7 +7,9 @@
 class Mine : public GameEntity 
 {
   public:
-    Mine(int x, int y): GameEntity(x, y, 'M') {}
+    Mine(int x, int y): GameEntity(x, y, 'M') {
+      setType(GameEntityType::MineType);
+    }
 
     Explosion explode() {
       setType(GameEntityType::NoneType);
