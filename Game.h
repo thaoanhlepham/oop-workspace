@@ -44,16 +44,22 @@ class Game
       for (int i = 0; i < maxIterations; i++) {
         for (GameEntity* entity : entities) {
           if (entity->getType() == GameEntityType::ShipType) {
-          Ship* ship = dynamic_cast<Ship*>(entity);
-          ship->move(1,0);
+            Ship* ship = dynamic_cast<Ship*>(entity);
+            ship->move(1,0);
           }
         }
 
         for (GameEntity* entityShip : entities) {
+          if (entityShip->getType() != GameEntityType::ShipType) {
+            break;
+          }
           Ship* ship = dynamic_cast<Ship*>(entityShip);
           auto shipPos = ship->getPos();
 
           for (GameEntity* entityMine : entities) {
+            if (entityMine->getType() != GameEntityType::MineType) {
+              break;
+            }
             Mine* mine = dynamic_cast<Mine*>(entityMine);
             auto minePos = mine->getPos();
 
@@ -72,6 +78,9 @@ class Game
             allShipsDestroyed = false;
             break;
           }
+        }
+        if (allShipsDestroyed) {
+          break;
         }
       }
     }
