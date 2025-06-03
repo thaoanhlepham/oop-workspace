@@ -6,7 +6,9 @@
 class Ship : public GameEntity 
 {
   public:
-    Ship(int x, int y): GameEntity(x, y, 'S') {}
+    Ship(int x, int y): GameEntity(x, y, 'S') {
+      setType(GameEntityType::ShipType);
+    }
 
     void move(int dx, int dy) {
       auto [x,y] = getPos();
