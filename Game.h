@@ -51,14 +51,14 @@ class Game
 
         for (GameEntity* entityShip : entities) {
           if (entityShip->getType() != GameEntityType::ShipType) {
-            break;
+            continue;;
           }
           Ship* ship = dynamic_cast<Ship*>(entityShip);
           auto shipPos = ship->getPos();
 
           for (GameEntity* entityMine : entities) {
             if (entityMine->getType() != GameEntityType::MineType) {
-              break;
+              continue;;
             }
             Mine* mine = dynamic_cast<Mine*>(entityMine);
             auto minePos = mine->getPos();
@@ -66,12 +66,14 @@ class Game
             double dist = Utils::calculateDistance(shipPos, minePos);
 
             if (dist <= mineDistanceThreshold) {
-              Explosion explosion = mine->explode();
-              explosion.apply(*ship);
+              Explosion* explosion = mine->explode();
+              explosion->apply(*ship);
+              entities.push_back(explosion);
               break;
             }
           }
         }
+
         bool allShipsDestroyed = true;
         for (GameEntity* entity : entities) {
           if (entity->getType() == GameEntityType::ShipType) {
@@ -79,6 +81,7 @@ class Game
             break;
           }
         }
+
         if (allShipsDestroyed) {
           break;
         }
